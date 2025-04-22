@@ -36,14 +36,19 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+require("express-async-errors");
 const express_1 = __importDefault(require("express"));
 const dotenv = __importStar(require("dotenv"));
+const Routes_1 = __importDefault(require("./Routes"));
 dotenv.config();
-const app = (0, express_1.default)();
 const port = process.env.NODE_ENV == 'development' ? 3000 : process.env.PORT;
-app.get('/', (req, res) => {
-    const { rq } = req.body;
-    res.json({ ok: !!rq });
+const app = (0, express_1.default)();
+app.use(express_1.default.urlencoded({ extended: true }));
+app.use(express_1.default.json());
+app.use(Routes_1.default);
+app.use((err, req, res, next) => {
+    res.json(err);
+    next(err);
     return;
 });
 app.listen(port, (err) => {

@@ -19,6 +19,16 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
  */
 export type User = $Result.DefaultSelection<Prisma.$UserPayload>
 /**
+ * Model Doctor
+ * 
+ */
+export type Doctor = $Result.DefaultSelection<Prisma.$DoctorPayload>
+/**
+ * Model Comment
+ * 
+ */
+export type Comment = $Result.DefaultSelection<Prisma.$CommentPayload>
+/**
  * Model RefreshToken
  * 
  */
@@ -158,6 +168,26 @@ export class PrismaClient<
     * ```
     */
   get user(): Prisma.UserDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.doctor`: Exposes CRUD operations for the **Doctor** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Doctors
+    * const doctors = await prisma.doctor.findMany()
+    * ```
+    */
+  get doctor(): Prisma.DoctorDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.comment`: Exposes CRUD operations for the **Comment** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Comments
+    * const comments = await prisma.comment.findMany()
+    * ```
+    */
+  get comment(): Prisma.CommentDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.refreshToken`: Exposes CRUD operations for the **RefreshToken** model.
@@ -609,6 +639,8 @@ export namespace Prisma {
 
   export const ModelName: {
     User: 'User',
+    Doctor: 'Doctor',
+    Comment: 'Comment',
     RefreshToken: 'RefreshToken'
   };
 
@@ -628,7 +660,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "refreshToken"
+      modelProps: "user" | "doctor" | "comment" | "refreshToken"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -703,6 +735,154 @@ export namespace Prisma {
           count: {
             args: Prisma.UserCountArgs<ExtArgs>
             result: $Utils.Optional<UserCountAggregateOutputType> | number
+          }
+        }
+      }
+      Doctor: {
+        payload: Prisma.$DoctorPayload<ExtArgs>
+        fields: Prisma.DoctorFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.DoctorFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DoctorPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.DoctorFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DoctorPayload>
+          }
+          findFirst: {
+            args: Prisma.DoctorFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DoctorPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.DoctorFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DoctorPayload>
+          }
+          findMany: {
+            args: Prisma.DoctorFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DoctorPayload>[]
+          }
+          create: {
+            args: Prisma.DoctorCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DoctorPayload>
+          }
+          createMany: {
+            args: Prisma.DoctorCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.DoctorCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DoctorPayload>[]
+          }
+          delete: {
+            args: Prisma.DoctorDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DoctorPayload>
+          }
+          update: {
+            args: Prisma.DoctorUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DoctorPayload>
+          }
+          deleteMany: {
+            args: Prisma.DoctorDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.DoctorUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.DoctorUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DoctorPayload>[]
+          }
+          upsert: {
+            args: Prisma.DoctorUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DoctorPayload>
+          }
+          aggregate: {
+            args: Prisma.DoctorAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateDoctor>
+          }
+          groupBy: {
+            args: Prisma.DoctorGroupByArgs<ExtArgs>
+            result: $Utils.Optional<DoctorGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.DoctorCountArgs<ExtArgs>
+            result: $Utils.Optional<DoctorCountAggregateOutputType> | number
+          }
+        }
+      }
+      Comment: {
+        payload: Prisma.$CommentPayload<ExtArgs>
+        fields: Prisma.CommentFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CommentFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CommentFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentPayload>
+          }
+          findFirst: {
+            args: Prisma.CommentFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CommentFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentPayload>
+          }
+          findMany: {
+            args: Prisma.CommentFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentPayload>[]
+          }
+          create: {
+            args: Prisma.CommentCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentPayload>
+          }
+          createMany: {
+            args: Prisma.CommentCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CommentCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentPayload>[]
+          }
+          delete: {
+            args: Prisma.CommentDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentPayload>
+          }
+          update: {
+            args: Prisma.CommentUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentPayload>
+          }
+          deleteMany: {
+            args: Prisma.CommentDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CommentUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CommentUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentPayload>[]
+          }
+          upsert: {
+            args: Prisma.CommentUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommentPayload>
+          }
+          aggregate: {
+            args: Prisma.CommentAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateComment>
+          }
+          groupBy: {
+            args: Prisma.CommentGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CommentGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CommentCountArgs<ExtArgs>
+            result: $Utils.Optional<CommentCountAggregateOutputType> | number
           }
         }
       }
@@ -865,6 +1045,8 @@ export namespace Prisma {
   }
   export type GlobalOmitConfig = {
     user?: UserOmit
+    doctor?: DoctorOmit
+    comment?: CommentOmit
     refreshToken?: RefreshTokenOmit
   }
 
@@ -955,6 +1137,36 @@ export namespace Prisma {
    */
 
 
+  /**
+   * Count Type DoctorCountOutputType
+   */
+
+  export type DoctorCountOutputType = {
+    comments: number
+  }
+
+  export type DoctorCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    comments?: boolean | DoctorCountOutputTypeCountCommentsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * DoctorCountOutputType without action
+   */
+  export type DoctorCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DoctorCountOutputType
+     */
+    select?: DoctorCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * DoctorCountOutputType without action
+   */
+  export type DoctorCountOutputTypeCountCommentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CommentWhereInput
+  }
+
 
   /**
    * Models
@@ -973,22 +1185,28 @@ export namespace Prisma {
   export type UserMinAggregateOutputType = {
     id: string | null
     name: string | null
-    username: string | null
+    email: string | null
     password: string | null
+    phone: string | null
+    isDoctor: boolean | null
   }
 
   export type UserMaxAggregateOutputType = {
     id: string | null
     name: string | null
-    username: string | null
+    email: string | null
     password: string | null
+    phone: string | null
+    isDoctor: boolean | null
   }
 
   export type UserCountAggregateOutputType = {
     id: number
     name: number
-    username: number
+    email: number
     password: number
+    phone: number
+    isDoctor: number
     _all: number
   }
 
@@ -996,22 +1214,28 @@ export namespace Prisma {
   export type UserMinAggregateInputType = {
     id?: true
     name?: true
-    username?: true
+    email?: true
     password?: true
+    phone?: true
+    isDoctor?: true
   }
 
   export type UserMaxAggregateInputType = {
     id?: true
     name?: true
-    username?: true
+    email?: true
     password?: true
+    phone?: true
+    isDoctor?: true
   }
 
   export type UserCountAggregateInputType = {
     id?: true
     name?: true
-    username?: true
+    email?: true
     password?: true
+    phone?: true
+    isDoctor?: true
     _all?: true
   }
 
@@ -1090,8 +1314,10 @@ export namespace Prisma {
   export type UserGroupByOutputType = {
     id: string
     name: string
-    username: string
+    email: string
     password: string
+    phone: string
+    isDoctor: boolean
     _count: UserCountAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
@@ -1114,35 +1340,45 @@ export namespace Prisma {
   export type UserSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
-    username?: boolean
+    email?: boolean
     password?: boolean
+    phone?: boolean
+    isDoctor?: boolean
     refresh_token?: boolean | User$refresh_tokenArgs<ExtArgs>
+    doctor_id?: boolean | User$doctor_idArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
-    username?: boolean
+    email?: boolean
     password?: boolean
+    phone?: boolean
+    isDoctor?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
-    username?: boolean
+    email?: boolean
     password?: boolean
+    phone?: boolean
+    isDoctor?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
     id?: boolean
     name?: boolean
-    username?: boolean
+    email?: boolean
     password?: boolean
+    phone?: boolean
+    isDoctor?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "username" | "password", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "password" | "phone" | "isDoctor", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     refresh_token?: boolean | User$refresh_tokenArgs<ExtArgs>
+    doctor_id?: boolean | User$doctor_idArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
   export type UserIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1151,12 +1387,15 @@ export namespace Prisma {
     name: "User"
     objects: {
       refresh_token: Prisma.$RefreshTokenPayload<ExtArgs> | null
+      doctor_id: Prisma.$DoctorPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       name: string
-      username: string
+      email: string
       password: string
+      phone: string
+      isDoctor: boolean
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -1552,6 +1791,7 @@ export namespace Prisma {
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     refresh_token<T extends User$refresh_tokenArgs<ExtArgs> = {}>(args?: Subset<T, User$refresh_tokenArgs<ExtArgs>>): Prisma__RefreshTokenClient<$Result.GetResult<Prisma.$RefreshTokenPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    doctor_id<T extends User$doctor_idArgs<ExtArgs> = {}>(args?: Subset<T, User$doctor_idArgs<ExtArgs>>): Prisma__DoctorClient<$Result.GetResult<Prisma.$DoctorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1583,8 +1823,10 @@ export namespace Prisma {
   interface UserFieldRefs {
     readonly id: FieldRef<"User", 'String'>
     readonly name: FieldRef<"User", 'String'>
-    readonly username: FieldRef<"User", 'String'>
+    readonly email: FieldRef<"User", 'String'>
     readonly password: FieldRef<"User", 'String'>
+    readonly phone: FieldRef<"User", 'String'>
+    readonly isDoctor: FieldRef<"User", 'Boolean'>
   }
     
 
@@ -1990,6 +2232,25 @@ export namespace Prisma {
   }
 
   /**
+   * User.doctor_id
+   */
+  export type User$doctor_idArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Doctor
+     */
+    select?: DoctorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Doctor
+     */
+    omit?: DoctorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DoctorInclude<ExtArgs> | null
+    where?: DoctorWhereInput
+  }
+
+  /**
    * User without action
    */
   export type UserDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2005,6 +2266,2109 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: UserInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Doctor
+   */
+
+  export type AggregateDoctor = {
+    _count: DoctorCountAggregateOutputType | null
+    _min: DoctorMinAggregateOutputType | null
+    _max: DoctorMaxAggregateOutputType | null
+  }
+
+  export type DoctorMinAggregateOutputType = {
+    id: string | null
+    crm: string | null
+    socialMedia: string | null
+    user_id: string | null
+  }
+
+  export type DoctorMaxAggregateOutputType = {
+    id: string | null
+    crm: string | null
+    socialMedia: string | null
+    user_id: string | null
+  }
+
+  export type DoctorCountAggregateOutputType = {
+    id: number
+    crm: number
+    socialMedia: number
+    user_id: number
+    _all: number
+  }
+
+
+  export type DoctorMinAggregateInputType = {
+    id?: true
+    crm?: true
+    socialMedia?: true
+    user_id?: true
+  }
+
+  export type DoctorMaxAggregateInputType = {
+    id?: true
+    crm?: true
+    socialMedia?: true
+    user_id?: true
+  }
+
+  export type DoctorCountAggregateInputType = {
+    id?: true
+    crm?: true
+    socialMedia?: true
+    user_id?: true
+    _all?: true
+  }
+
+  export type DoctorAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Doctor to aggregate.
+     */
+    where?: DoctorWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Doctors to fetch.
+     */
+    orderBy?: DoctorOrderByWithRelationInput | DoctorOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: DoctorWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Doctors from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Doctors.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Doctors
+    **/
+    _count?: true | DoctorCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: DoctorMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: DoctorMaxAggregateInputType
+  }
+
+  export type GetDoctorAggregateType<T extends DoctorAggregateArgs> = {
+        [P in keyof T & keyof AggregateDoctor]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateDoctor[P]>
+      : GetScalarType<T[P], AggregateDoctor[P]>
+  }
+
+
+
+
+  export type DoctorGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DoctorWhereInput
+    orderBy?: DoctorOrderByWithAggregationInput | DoctorOrderByWithAggregationInput[]
+    by: DoctorScalarFieldEnum[] | DoctorScalarFieldEnum
+    having?: DoctorScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: DoctorCountAggregateInputType | true
+    _min?: DoctorMinAggregateInputType
+    _max?: DoctorMaxAggregateInputType
+  }
+
+  export type DoctorGroupByOutputType = {
+    id: string
+    crm: string
+    socialMedia: string
+    user_id: string
+    _count: DoctorCountAggregateOutputType | null
+    _min: DoctorMinAggregateOutputType | null
+    _max: DoctorMaxAggregateOutputType | null
+  }
+
+  type GetDoctorGroupByPayload<T extends DoctorGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<DoctorGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof DoctorGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], DoctorGroupByOutputType[P]>
+            : GetScalarType<T[P], DoctorGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type DoctorSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    crm?: boolean
+    socialMedia?: boolean
+    user_id?: boolean
+    comments?: boolean | Doctor$commentsArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    _count?: boolean | DoctorCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["doctor"]>
+
+  export type DoctorSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    crm?: boolean
+    socialMedia?: boolean
+    user_id?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["doctor"]>
+
+  export type DoctorSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    crm?: boolean
+    socialMedia?: boolean
+    user_id?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["doctor"]>
+
+  export type DoctorSelectScalar = {
+    id?: boolean
+    crm?: boolean
+    socialMedia?: boolean
+    user_id?: boolean
+  }
+
+  export type DoctorOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "crm" | "socialMedia" | "user_id", ExtArgs["result"]["doctor"]>
+  export type DoctorInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    comments?: boolean | Doctor$commentsArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    _count?: boolean | DoctorCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type DoctorIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type DoctorIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $DoctorPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Doctor"
+    objects: {
+      comments: Prisma.$CommentPayload<ExtArgs>[]
+      user: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      crm: string
+      socialMedia: string
+      user_id: string
+    }, ExtArgs["result"]["doctor"]>
+    composites: {}
+  }
+
+  type DoctorGetPayload<S extends boolean | null | undefined | DoctorDefaultArgs> = $Result.GetResult<Prisma.$DoctorPayload, S>
+
+  type DoctorCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<DoctorFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: DoctorCountAggregateInputType | true
+    }
+
+  export interface DoctorDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Doctor'], meta: { name: 'Doctor' } }
+    /**
+     * Find zero or one Doctor that matches the filter.
+     * @param {DoctorFindUniqueArgs} args - Arguments to find a Doctor
+     * @example
+     * // Get one Doctor
+     * const doctor = await prisma.doctor.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends DoctorFindUniqueArgs>(args: SelectSubset<T, DoctorFindUniqueArgs<ExtArgs>>): Prisma__DoctorClient<$Result.GetResult<Prisma.$DoctorPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Doctor that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {DoctorFindUniqueOrThrowArgs} args - Arguments to find a Doctor
+     * @example
+     * // Get one Doctor
+     * const doctor = await prisma.doctor.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends DoctorFindUniqueOrThrowArgs>(args: SelectSubset<T, DoctorFindUniqueOrThrowArgs<ExtArgs>>): Prisma__DoctorClient<$Result.GetResult<Prisma.$DoctorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Doctor that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DoctorFindFirstArgs} args - Arguments to find a Doctor
+     * @example
+     * // Get one Doctor
+     * const doctor = await prisma.doctor.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends DoctorFindFirstArgs>(args?: SelectSubset<T, DoctorFindFirstArgs<ExtArgs>>): Prisma__DoctorClient<$Result.GetResult<Prisma.$DoctorPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Doctor that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DoctorFindFirstOrThrowArgs} args - Arguments to find a Doctor
+     * @example
+     * // Get one Doctor
+     * const doctor = await prisma.doctor.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends DoctorFindFirstOrThrowArgs>(args?: SelectSubset<T, DoctorFindFirstOrThrowArgs<ExtArgs>>): Prisma__DoctorClient<$Result.GetResult<Prisma.$DoctorPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Doctors that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DoctorFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Doctors
+     * const doctors = await prisma.doctor.findMany()
+     * 
+     * // Get first 10 Doctors
+     * const doctors = await prisma.doctor.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const doctorWithIdOnly = await prisma.doctor.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends DoctorFindManyArgs>(args?: SelectSubset<T, DoctorFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DoctorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Doctor.
+     * @param {DoctorCreateArgs} args - Arguments to create a Doctor.
+     * @example
+     * // Create one Doctor
+     * const Doctor = await prisma.doctor.create({
+     *   data: {
+     *     // ... data to create a Doctor
+     *   }
+     * })
+     * 
+     */
+    create<T extends DoctorCreateArgs>(args: SelectSubset<T, DoctorCreateArgs<ExtArgs>>): Prisma__DoctorClient<$Result.GetResult<Prisma.$DoctorPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Doctors.
+     * @param {DoctorCreateManyArgs} args - Arguments to create many Doctors.
+     * @example
+     * // Create many Doctors
+     * const doctor = await prisma.doctor.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends DoctorCreateManyArgs>(args?: SelectSubset<T, DoctorCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Doctors and returns the data saved in the database.
+     * @param {DoctorCreateManyAndReturnArgs} args - Arguments to create many Doctors.
+     * @example
+     * // Create many Doctors
+     * const doctor = await prisma.doctor.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Doctors and only return the `id`
+     * const doctorWithIdOnly = await prisma.doctor.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends DoctorCreateManyAndReturnArgs>(args?: SelectSubset<T, DoctorCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DoctorPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Doctor.
+     * @param {DoctorDeleteArgs} args - Arguments to delete one Doctor.
+     * @example
+     * // Delete one Doctor
+     * const Doctor = await prisma.doctor.delete({
+     *   where: {
+     *     // ... filter to delete one Doctor
+     *   }
+     * })
+     * 
+     */
+    delete<T extends DoctorDeleteArgs>(args: SelectSubset<T, DoctorDeleteArgs<ExtArgs>>): Prisma__DoctorClient<$Result.GetResult<Prisma.$DoctorPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Doctor.
+     * @param {DoctorUpdateArgs} args - Arguments to update one Doctor.
+     * @example
+     * // Update one Doctor
+     * const doctor = await prisma.doctor.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends DoctorUpdateArgs>(args: SelectSubset<T, DoctorUpdateArgs<ExtArgs>>): Prisma__DoctorClient<$Result.GetResult<Prisma.$DoctorPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Doctors.
+     * @param {DoctorDeleteManyArgs} args - Arguments to filter Doctors to delete.
+     * @example
+     * // Delete a few Doctors
+     * const { count } = await prisma.doctor.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends DoctorDeleteManyArgs>(args?: SelectSubset<T, DoctorDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Doctors.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DoctorUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Doctors
+     * const doctor = await prisma.doctor.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends DoctorUpdateManyArgs>(args: SelectSubset<T, DoctorUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Doctors and returns the data updated in the database.
+     * @param {DoctorUpdateManyAndReturnArgs} args - Arguments to update many Doctors.
+     * @example
+     * // Update many Doctors
+     * const doctor = await prisma.doctor.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Doctors and only return the `id`
+     * const doctorWithIdOnly = await prisma.doctor.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends DoctorUpdateManyAndReturnArgs>(args: SelectSubset<T, DoctorUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DoctorPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Doctor.
+     * @param {DoctorUpsertArgs} args - Arguments to update or create a Doctor.
+     * @example
+     * // Update or create a Doctor
+     * const doctor = await prisma.doctor.upsert({
+     *   create: {
+     *     // ... data to create a Doctor
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Doctor we want to update
+     *   }
+     * })
+     */
+    upsert<T extends DoctorUpsertArgs>(args: SelectSubset<T, DoctorUpsertArgs<ExtArgs>>): Prisma__DoctorClient<$Result.GetResult<Prisma.$DoctorPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Doctors.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DoctorCountArgs} args - Arguments to filter Doctors to count.
+     * @example
+     * // Count the number of Doctors
+     * const count = await prisma.doctor.count({
+     *   where: {
+     *     // ... the filter for the Doctors we want to count
+     *   }
+     * })
+    **/
+    count<T extends DoctorCountArgs>(
+      args?: Subset<T, DoctorCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], DoctorCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Doctor.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DoctorAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends DoctorAggregateArgs>(args: Subset<T, DoctorAggregateArgs>): Prisma.PrismaPromise<GetDoctorAggregateType<T>>
+
+    /**
+     * Group by Doctor.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DoctorGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends DoctorGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: DoctorGroupByArgs['orderBy'] }
+        : { orderBy?: DoctorGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, DoctorGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDoctorGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Doctor model
+   */
+  readonly fields: DoctorFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Doctor.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__DoctorClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    comments<T extends Doctor$commentsArgs<ExtArgs> = {}>(args?: Subset<T, Doctor$commentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Doctor model
+   */
+  interface DoctorFieldRefs {
+    readonly id: FieldRef<"Doctor", 'String'>
+    readonly crm: FieldRef<"Doctor", 'String'>
+    readonly socialMedia: FieldRef<"Doctor", 'String'>
+    readonly user_id: FieldRef<"Doctor", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Doctor findUnique
+   */
+  export type DoctorFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Doctor
+     */
+    select?: DoctorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Doctor
+     */
+    omit?: DoctorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DoctorInclude<ExtArgs> | null
+    /**
+     * Filter, which Doctor to fetch.
+     */
+    where: DoctorWhereUniqueInput
+  }
+
+  /**
+   * Doctor findUniqueOrThrow
+   */
+  export type DoctorFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Doctor
+     */
+    select?: DoctorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Doctor
+     */
+    omit?: DoctorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DoctorInclude<ExtArgs> | null
+    /**
+     * Filter, which Doctor to fetch.
+     */
+    where: DoctorWhereUniqueInput
+  }
+
+  /**
+   * Doctor findFirst
+   */
+  export type DoctorFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Doctor
+     */
+    select?: DoctorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Doctor
+     */
+    omit?: DoctorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DoctorInclude<ExtArgs> | null
+    /**
+     * Filter, which Doctor to fetch.
+     */
+    where?: DoctorWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Doctors to fetch.
+     */
+    orderBy?: DoctorOrderByWithRelationInput | DoctorOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Doctors.
+     */
+    cursor?: DoctorWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Doctors from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Doctors.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Doctors.
+     */
+    distinct?: DoctorScalarFieldEnum | DoctorScalarFieldEnum[]
+  }
+
+  /**
+   * Doctor findFirstOrThrow
+   */
+  export type DoctorFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Doctor
+     */
+    select?: DoctorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Doctor
+     */
+    omit?: DoctorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DoctorInclude<ExtArgs> | null
+    /**
+     * Filter, which Doctor to fetch.
+     */
+    where?: DoctorWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Doctors to fetch.
+     */
+    orderBy?: DoctorOrderByWithRelationInput | DoctorOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Doctors.
+     */
+    cursor?: DoctorWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Doctors from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Doctors.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Doctors.
+     */
+    distinct?: DoctorScalarFieldEnum | DoctorScalarFieldEnum[]
+  }
+
+  /**
+   * Doctor findMany
+   */
+  export type DoctorFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Doctor
+     */
+    select?: DoctorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Doctor
+     */
+    omit?: DoctorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DoctorInclude<ExtArgs> | null
+    /**
+     * Filter, which Doctors to fetch.
+     */
+    where?: DoctorWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Doctors to fetch.
+     */
+    orderBy?: DoctorOrderByWithRelationInput | DoctorOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Doctors.
+     */
+    cursor?: DoctorWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Doctors from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Doctors.
+     */
+    skip?: number
+    distinct?: DoctorScalarFieldEnum | DoctorScalarFieldEnum[]
+  }
+
+  /**
+   * Doctor create
+   */
+  export type DoctorCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Doctor
+     */
+    select?: DoctorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Doctor
+     */
+    omit?: DoctorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DoctorInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Doctor.
+     */
+    data: XOR<DoctorCreateInput, DoctorUncheckedCreateInput>
+  }
+
+  /**
+   * Doctor createMany
+   */
+  export type DoctorCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Doctors.
+     */
+    data: DoctorCreateManyInput | DoctorCreateManyInput[]
+  }
+
+  /**
+   * Doctor createManyAndReturn
+   */
+  export type DoctorCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Doctor
+     */
+    select?: DoctorSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Doctor
+     */
+    omit?: DoctorOmit<ExtArgs> | null
+    /**
+     * The data used to create many Doctors.
+     */
+    data: DoctorCreateManyInput | DoctorCreateManyInput[]
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DoctorIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Doctor update
+   */
+  export type DoctorUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Doctor
+     */
+    select?: DoctorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Doctor
+     */
+    omit?: DoctorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DoctorInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Doctor.
+     */
+    data: XOR<DoctorUpdateInput, DoctorUncheckedUpdateInput>
+    /**
+     * Choose, which Doctor to update.
+     */
+    where: DoctorWhereUniqueInput
+  }
+
+  /**
+   * Doctor updateMany
+   */
+  export type DoctorUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Doctors.
+     */
+    data: XOR<DoctorUpdateManyMutationInput, DoctorUncheckedUpdateManyInput>
+    /**
+     * Filter which Doctors to update
+     */
+    where?: DoctorWhereInput
+    /**
+     * Limit how many Doctors to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Doctor updateManyAndReturn
+   */
+  export type DoctorUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Doctor
+     */
+    select?: DoctorSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Doctor
+     */
+    omit?: DoctorOmit<ExtArgs> | null
+    /**
+     * The data used to update Doctors.
+     */
+    data: XOR<DoctorUpdateManyMutationInput, DoctorUncheckedUpdateManyInput>
+    /**
+     * Filter which Doctors to update
+     */
+    where?: DoctorWhereInput
+    /**
+     * Limit how many Doctors to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DoctorIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Doctor upsert
+   */
+  export type DoctorUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Doctor
+     */
+    select?: DoctorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Doctor
+     */
+    omit?: DoctorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DoctorInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Doctor to update in case it exists.
+     */
+    where: DoctorWhereUniqueInput
+    /**
+     * In case the Doctor found by the `where` argument doesn't exist, create a new Doctor with this data.
+     */
+    create: XOR<DoctorCreateInput, DoctorUncheckedCreateInput>
+    /**
+     * In case the Doctor was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<DoctorUpdateInput, DoctorUncheckedUpdateInput>
+  }
+
+  /**
+   * Doctor delete
+   */
+  export type DoctorDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Doctor
+     */
+    select?: DoctorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Doctor
+     */
+    omit?: DoctorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DoctorInclude<ExtArgs> | null
+    /**
+     * Filter which Doctor to delete.
+     */
+    where: DoctorWhereUniqueInput
+  }
+
+  /**
+   * Doctor deleteMany
+   */
+  export type DoctorDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Doctors to delete
+     */
+    where?: DoctorWhereInput
+    /**
+     * Limit how many Doctors to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Doctor.comments
+   */
+  export type Doctor$commentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comment
+     */
+    select?: CommentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comment
+     */
+    omit?: CommentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommentInclude<ExtArgs> | null
+    where?: CommentWhereInput
+    orderBy?: CommentOrderByWithRelationInput | CommentOrderByWithRelationInput[]
+    cursor?: CommentWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CommentScalarFieldEnum | CommentScalarFieldEnum[]
+  }
+
+  /**
+   * Doctor without action
+   */
+  export type DoctorDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Doctor
+     */
+    select?: DoctorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Doctor
+     */
+    omit?: DoctorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DoctorInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Comment
+   */
+
+  export type AggregateComment = {
+    _count: CommentCountAggregateOutputType | null
+    _min: CommentMinAggregateOutputType | null
+    _max: CommentMaxAggregateOutputType | null
+  }
+
+  export type CommentMinAggregateOutputType = {
+    id: string | null
+    content: string | null
+    medico_id: string | null
+  }
+
+  export type CommentMaxAggregateOutputType = {
+    id: string | null
+    content: string | null
+    medico_id: string | null
+  }
+
+  export type CommentCountAggregateOutputType = {
+    id: number
+    content: number
+    medico_id: number
+    _all: number
+  }
+
+
+  export type CommentMinAggregateInputType = {
+    id?: true
+    content?: true
+    medico_id?: true
+  }
+
+  export type CommentMaxAggregateInputType = {
+    id?: true
+    content?: true
+    medico_id?: true
+  }
+
+  export type CommentCountAggregateInputType = {
+    id?: true
+    content?: true
+    medico_id?: true
+    _all?: true
+  }
+
+  export type CommentAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Comment to aggregate.
+     */
+    where?: CommentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Comments to fetch.
+     */
+    orderBy?: CommentOrderByWithRelationInput | CommentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CommentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Comments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Comments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Comments
+    **/
+    _count?: true | CommentCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CommentMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CommentMaxAggregateInputType
+  }
+
+  export type GetCommentAggregateType<T extends CommentAggregateArgs> = {
+        [P in keyof T & keyof AggregateComment]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateComment[P]>
+      : GetScalarType<T[P], AggregateComment[P]>
+  }
+
+
+
+
+  export type CommentGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CommentWhereInput
+    orderBy?: CommentOrderByWithAggregationInput | CommentOrderByWithAggregationInput[]
+    by: CommentScalarFieldEnum[] | CommentScalarFieldEnum
+    having?: CommentScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CommentCountAggregateInputType | true
+    _min?: CommentMinAggregateInputType
+    _max?: CommentMaxAggregateInputType
+  }
+
+  export type CommentGroupByOutputType = {
+    id: string
+    content: string
+    medico_id: string
+    _count: CommentCountAggregateOutputType | null
+    _min: CommentMinAggregateOutputType | null
+    _max: CommentMaxAggregateOutputType | null
+  }
+
+  type GetCommentGroupByPayload<T extends CommentGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CommentGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CommentGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CommentGroupByOutputType[P]>
+            : GetScalarType<T[P], CommentGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CommentSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    content?: boolean
+    medico_id?: boolean
+    medico?: boolean | DoctorDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["comment"]>
+
+  export type CommentSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    content?: boolean
+    medico_id?: boolean
+    medico?: boolean | DoctorDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["comment"]>
+
+  export type CommentSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    content?: boolean
+    medico_id?: boolean
+    medico?: boolean | DoctorDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["comment"]>
+
+  export type CommentSelectScalar = {
+    id?: boolean
+    content?: boolean
+    medico_id?: boolean
+  }
+
+  export type CommentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "content" | "medico_id", ExtArgs["result"]["comment"]>
+  export type CommentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    medico?: boolean | DoctorDefaultArgs<ExtArgs>
+  }
+  export type CommentIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    medico?: boolean | DoctorDefaultArgs<ExtArgs>
+  }
+  export type CommentIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    medico?: boolean | DoctorDefaultArgs<ExtArgs>
+  }
+
+  export type $CommentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Comment"
+    objects: {
+      medico: Prisma.$DoctorPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      content: string
+      medico_id: string
+    }, ExtArgs["result"]["comment"]>
+    composites: {}
+  }
+
+  type CommentGetPayload<S extends boolean | null | undefined | CommentDefaultArgs> = $Result.GetResult<Prisma.$CommentPayload, S>
+
+  type CommentCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CommentFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CommentCountAggregateInputType | true
+    }
+
+  export interface CommentDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Comment'], meta: { name: 'Comment' } }
+    /**
+     * Find zero or one Comment that matches the filter.
+     * @param {CommentFindUniqueArgs} args - Arguments to find a Comment
+     * @example
+     * // Get one Comment
+     * const comment = await prisma.comment.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CommentFindUniqueArgs>(args: SelectSubset<T, CommentFindUniqueArgs<ExtArgs>>): Prisma__CommentClient<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Comment that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CommentFindUniqueOrThrowArgs} args - Arguments to find a Comment
+     * @example
+     * // Get one Comment
+     * const comment = await prisma.comment.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CommentFindUniqueOrThrowArgs>(args: SelectSubset<T, CommentFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CommentClient<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Comment that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommentFindFirstArgs} args - Arguments to find a Comment
+     * @example
+     * // Get one Comment
+     * const comment = await prisma.comment.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CommentFindFirstArgs>(args?: SelectSubset<T, CommentFindFirstArgs<ExtArgs>>): Prisma__CommentClient<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Comment that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommentFindFirstOrThrowArgs} args - Arguments to find a Comment
+     * @example
+     * // Get one Comment
+     * const comment = await prisma.comment.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CommentFindFirstOrThrowArgs>(args?: SelectSubset<T, CommentFindFirstOrThrowArgs<ExtArgs>>): Prisma__CommentClient<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Comments that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommentFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Comments
+     * const comments = await prisma.comment.findMany()
+     * 
+     * // Get first 10 Comments
+     * const comments = await prisma.comment.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const commentWithIdOnly = await prisma.comment.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CommentFindManyArgs>(args?: SelectSubset<T, CommentFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Comment.
+     * @param {CommentCreateArgs} args - Arguments to create a Comment.
+     * @example
+     * // Create one Comment
+     * const Comment = await prisma.comment.create({
+     *   data: {
+     *     // ... data to create a Comment
+     *   }
+     * })
+     * 
+     */
+    create<T extends CommentCreateArgs>(args: SelectSubset<T, CommentCreateArgs<ExtArgs>>): Prisma__CommentClient<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Comments.
+     * @param {CommentCreateManyArgs} args - Arguments to create many Comments.
+     * @example
+     * // Create many Comments
+     * const comment = await prisma.comment.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CommentCreateManyArgs>(args?: SelectSubset<T, CommentCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Comments and returns the data saved in the database.
+     * @param {CommentCreateManyAndReturnArgs} args - Arguments to create many Comments.
+     * @example
+     * // Create many Comments
+     * const comment = await prisma.comment.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Comments and only return the `id`
+     * const commentWithIdOnly = await prisma.comment.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CommentCreateManyAndReturnArgs>(args?: SelectSubset<T, CommentCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Comment.
+     * @param {CommentDeleteArgs} args - Arguments to delete one Comment.
+     * @example
+     * // Delete one Comment
+     * const Comment = await prisma.comment.delete({
+     *   where: {
+     *     // ... filter to delete one Comment
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CommentDeleteArgs>(args: SelectSubset<T, CommentDeleteArgs<ExtArgs>>): Prisma__CommentClient<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Comment.
+     * @param {CommentUpdateArgs} args - Arguments to update one Comment.
+     * @example
+     * // Update one Comment
+     * const comment = await prisma.comment.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CommentUpdateArgs>(args: SelectSubset<T, CommentUpdateArgs<ExtArgs>>): Prisma__CommentClient<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Comments.
+     * @param {CommentDeleteManyArgs} args - Arguments to filter Comments to delete.
+     * @example
+     * // Delete a few Comments
+     * const { count } = await prisma.comment.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CommentDeleteManyArgs>(args?: SelectSubset<T, CommentDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Comments.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommentUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Comments
+     * const comment = await prisma.comment.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CommentUpdateManyArgs>(args: SelectSubset<T, CommentUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Comments and returns the data updated in the database.
+     * @param {CommentUpdateManyAndReturnArgs} args - Arguments to update many Comments.
+     * @example
+     * // Update many Comments
+     * const comment = await prisma.comment.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Comments and only return the `id`
+     * const commentWithIdOnly = await prisma.comment.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CommentUpdateManyAndReturnArgs>(args: SelectSubset<T, CommentUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Comment.
+     * @param {CommentUpsertArgs} args - Arguments to update or create a Comment.
+     * @example
+     * // Update or create a Comment
+     * const comment = await prisma.comment.upsert({
+     *   create: {
+     *     // ... data to create a Comment
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Comment we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CommentUpsertArgs>(args: SelectSubset<T, CommentUpsertArgs<ExtArgs>>): Prisma__CommentClient<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Comments.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommentCountArgs} args - Arguments to filter Comments to count.
+     * @example
+     * // Count the number of Comments
+     * const count = await prisma.comment.count({
+     *   where: {
+     *     // ... the filter for the Comments we want to count
+     *   }
+     * })
+    **/
+    count<T extends CommentCountArgs>(
+      args?: Subset<T, CommentCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CommentCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Comment.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommentAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CommentAggregateArgs>(args: Subset<T, CommentAggregateArgs>): Prisma.PrismaPromise<GetCommentAggregateType<T>>
+
+    /**
+     * Group by Comment.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommentGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CommentGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CommentGroupByArgs['orderBy'] }
+        : { orderBy?: CommentGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CommentGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCommentGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Comment model
+   */
+  readonly fields: CommentFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Comment.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CommentClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    medico<T extends DoctorDefaultArgs<ExtArgs> = {}>(args?: Subset<T, DoctorDefaultArgs<ExtArgs>>): Prisma__DoctorClient<$Result.GetResult<Prisma.$DoctorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Comment model
+   */
+  interface CommentFieldRefs {
+    readonly id: FieldRef<"Comment", 'String'>
+    readonly content: FieldRef<"Comment", 'String'>
+    readonly medico_id: FieldRef<"Comment", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Comment findUnique
+   */
+  export type CommentFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comment
+     */
+    select?: CommentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comment
+     */
+    omit?: CommentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommentInclude<ExtArgs> | null
+    /**
+     * Filter, which Comment to fetch.
+     */
+    where: CommentWhereUniqueInput
+  }
+
+  /**
+   * Comment findUniqueOrThrow
+   */
+  export type CommentFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comment
+     */
+    select?: CommentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comment
+     */
+    omit?: CommentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommentInclude<ExtArgs> | null
+    /**
+     * Filter, which Comment to fetch.
+     */
+    where: CommentWhereUniqueInput
+  }
+
+  /**
+   * Comment findFirst
+   */
+  export type CommentFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comment
+     */
+    select?: CommentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comment
+     */
+    omit?: CommentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommentInclude<ExtArgs> | null
+    /**
+     * Filter, which Comment to fetch.
+     */
+    where?: CommentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Comments to fetch.
+     */
+    orderBy?: CommentOrderByWithRelationInput | CommentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Comments.
+     */
+    cursor?: CommentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Comments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Comments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Comments.
+     */
+    distinct?: CommentScalarFieldEnum | CommentScalarFieldEnum[]
+  }
+
+  /**
+   * Comment findFirstOrThrow
+   */
+  export type CommentFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comment
+     */
+    select?: CommentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comment
+     */
+    omit?: CommentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommentInclude<ExtArgs> | null
+    /**
+     * Filter, which Comment to fetch.
+     */
+    where?: CommentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Comments to fetch.
+     */
+    orderBy?: CommentOrderByWithRelationInput | CommentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Comments.
+     */
+    cursor?: CommentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Comments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Comments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Comments.
+     */
+    distinct?: CommentScalarFieldEnum | CommentScalarFieldEnum[]
+  }
+
+  /**
+   * Comment findMany
+   */
+  export type CommentFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comment
+     */
+    select?: CommentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comment
+     */
+    omit?: CommentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommentInclude<ExtArgs> | null
+    /**
+     * Filter, which Comments to fetch.
+     */
+    where?: CommentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Comments to fetch.
+     */
+    orderBy?: CommentOrderByWithRelationInput | CommentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Comments.
+     */
+    cursor?: CommentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Comments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Comments.
+     */
+    skip?: number
+    distinct?: CommentScalarFieldEnum | CommentScalarFieldEnum[]
+  }
+
+  /**
+   * Comment create
+   */
+  export type CommentCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comment
+     */
+    select?: CommentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comment
+     */
+    omit?: CommentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommentInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Comment.
+     */
+    data: XOR<CommentCreateInput, CommentUncheckedCreateInput>
+  }
+
+  /**
+   * Comment createMany
+   */
+  export type CommentCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Comments.
+     */
+    data: CommentCreateManyInput | CommentCreateManyInput[]
+  }
+
+  /**
+   * Comment createManyAndReturn
+   */
+  export type CommentCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comment
+     */
+    select?: CommentSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comment
+     */
+    omit?: CommentOmit<ExtArgs> | null
+    /**
+     * The data used to create many Comments.
+     */
+    data: CommentCreateManyInput | CommentCreateManyInput[]
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommentIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Comment update
+   */
+  export type CommentUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comment
+     */
+    select?: CommentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comment
+     */
+    omit?: CommentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommentInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Comment.
+     */
+    data: XOR<CommentUpdateInput, CommentUncheckedUpdateInput>
+    /**
+     * Choose, which Comment to update.
+     */
+    where: CommentWhereUniqueInput
+  }
+
+  /**
+   * Comment updateMany
+   */
+  export type CommentUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Comments.
+     */
+    data: XOR<CommentUpdateManyMutationInput, CommentUncheckedUpdateManyInput>
+    /**
+     * Filter which Comments to update
+     */
+    where?: CommentWhereInput
+    /**
+     * Limit how many Comments to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Comment updateManyAndReturn
+   */
+  export type CommentUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comment
+     */
+    select?: CommentSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comment
+     */
+    omit?: CommentOmit<ExtArgs> | null
+    /**
+     * The data used to update Comments.
+     */
+    data: XOR<CommentUpdateManyMutationInput, CommentUncheckedUpdateManyInput>
+    /**
+     * Filter which Comments to update
+     */
+    where?: CommentWhereInput
+    /**
+     * Limit how many Comments to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommentIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Comment upsert
+   */
+  export type CommentUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comment
+     */
+    select?: CommentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comment
+     */
+    omit?: CommentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommentInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Comment to update in case it exists.
+     */
+    where: CommentWhereUniqueInput
+    /**
+     * In case the Comment found by the `where` argument doesn't exist, create a new Comment with this data.
+     */
+    create: XOR<CommentCreateInput, CommentUncheckedCreateInput>
+    /**
+     * In case the Comment was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CommentUpdateInput, CommentUncheckedUpdateInput>
+  }
+
+  /**
+   * Comment delete
+   */
+  export type CommentDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comment
+     */
+    select?: CommentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comment
+     */
+    omit?: CommentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommentInclude<ExtArgs> | null
+    /**
+     * Filter which Comment to delete.
+     */
+    where: CommentWhereUniqueInput
+  }
+
+  /**
+   * Comment deleteMany
+   */
+  export type CommentDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Comments to delete
+     */
+    where?: CommentWhereInput
+    /**
+     * Limit how many Comments to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Comment without action
+   */
+  export type CommentDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comment
+     */
+    select?: CommentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comment
+     */
+    omit?: CommentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommentInclude<ExtArgs> | null
   }
 
 
@@ -3086,11 +5450,32 @@ export namespace Prisma {
   export const UserScalarFieldEnum: {
     id: 'id',
     name: 'name',
-    username: 'username',
-    password: 'password'
+    email: 'email',
+    password: 'password',
+    phone: 'phone',
+    isDoctor: 'isDoctor'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+
+
+  export const DoctorScalarFieldEnum: {
+    id: 'id',
+    crm: 'crm',
+    socialMedia: 'socialMedia',
+    user_id: 'user_id'
+  };
+
+  export type DoctorScalarFieldEnum = (typeof DoctorScalarFieldEnum)[keyof typeof DoctorScalarFieldEnum]
+
+
+  export const CommentScalarFieldEnum: {
+    id: 'id',
+    content: 'content',
+    medico_id: 'medico_id'
+  };
+
+  export type CommentScalarFieldEnum = (typeof CommentScalarFieldEnum)[keyof typeof CommentScalarFieldEnum]
 
 
   export const RefreshTokenScalarFieldEnum: {
@@ -3123,6 +5508,13 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
    * Reference to a field of type 'Int'
    */
   export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
@@ -3145,35 +5537,46 @@ export namespace Prisma {
     NOT?: UserWhereInput | UserWhereInput[]
     id?: StringFilter<"User"> | string
     name?: StringFilter<"User"> | string
-    username?: StringFilter<"User"> | string
+    email?: StringFilter<"User"> | string
     password?: StringFilter<"User"> | string
+    phone?: StringFilter<"User"> | string
+    isDoctor?: BoolFilter<"User"> | boolean
     refresh_token?: XOR<RefreshTokenNullableScalarRelationFilter, RefreshTokenWhereInput> | null
+    doctor_id?: XOR<DoctorNullableScalarRelationFilter, DoctorWhereInput> | null
   }
 
   export type UserOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
-    username?: SortOrder
+    email?: SortOrder
     password?: SortOrder
+    phone?: SortOrder
+    isDoctor?: SortOrder
     refresh_token?: RefreshTokenOrderByWithRelationInput
+    doctor_id?: DoctorOrderByWithRelationInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    username?: string
+    email?: string
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
     name?: StringFilter<"User"> | string
     password?: StringFilter<"User"> | string
+    phone?: StringFilter<"User"> | string
+    isDoctor?: BoolFilter<"User"> | boolean
     refresh_token?: XOR<RefreshTokenNullableScalarRelationFilter, RefreshTokenWhereInput> | null
-  }, "id" | "username">
+    doctor_id?: XOR<DoctorNullableScalarRelationFilter, DoctorWhereInput> | null
+  }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
-    username?: SortOrder
+    email?: SortOrder
     password?: SortOrder
+    phone?: SortOrder
+    isDoctor?: SortOrder
     _count?: UserCountOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
     _min?: UserMinOrderByAggregateInput
@@ -3185,8 +5588,108 @@ export namespace Prisma {
     NOT?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"User"> | string
     name?: StringWithAggregatesFilter<"User"> | string
-    username?: StringWithAggregatesFilter<"User"> | string
+    email?: StringWithAggregatesFilter<"User"> | string
     password?: StringWithAggregatesFilter<"User"> | string
+    phone?: StringWithAggregatesFilter<"User"> | string
+    isDoctor?: BoolWithAggregatesFilter<"User"> | boolean
+  }
+
+  export type DoctorWhereInput = {
+    AND?: DoctorWhereInput | DoctorWhereInput[]
+    OR?: DoctorWhereInput[]
+    NOT?: DoctorWhereInput | DoctorWhereInput[]
+    id?: StringFilter<"Doctor"> | string
+    crm?: StringFilter<"Doctor"> | string
+    socialMedia?: StringFilter<"Doctor"> | string
+    user_id?: StringFilter<"Doctor"> | string
+    comments?: CommentListRelationFilter
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type DoctorOrderByWithRelationInput = {
+    id?: SortOrder
+    crm?: SortOrder
+    socialMedia?: SortOrder
+    user_id?: SortOrder
+    comments?: CommentOrderByRelationAggregateInput
+    user?: UserOrderByWithRelationInput
+  }
+
+  export type DoctorWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    crm?: string
+    user_id?: string
+    AND?: DoctorWhereInput | DoctorWhereInput[]
+    OR?: DoctorWhereInput[]
+    NOT?: DoctorWhereInput | DoctorWhereInput[]
+    socialMedia?: StringFilter<"Doctor"> | string
+    comments?: CommentListRelationFilter
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id" | "crm" | "user_id">
+
+  export type DoctorOrderByWithAggregationInput = {
+    id?: SortOrder
+    crm?: SortOrder
+    socialMedia?: SortOrder
+    user_id?: SortOrder
+    _count?: DoctorCountOrderByAggregateInput
+    _max?: DoctorMaxOrderByAggregateInput
+    _min?: DoctorMinOrderByAggregateInput
+  }
+
+  export type DoctorScalarWhereWithAggregatesInput = {
+    AND?: DoctorScalarWhereWithAggregatesInput | DoctorScalarWhereWithAggregatesInput[]
+    OR?: DoctorScalarWhereWithAggregatesInput[]
+    NOT?: DoctorScalarWhereWithAggregatesInput | DoctorScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Doctor"> | string
+    crm?: StringWithAggregatesFilter<"Doctor"> | string
+    socialMedia?: StringWithAggregatesFilter<"Doctor"> | string
+    user_id?: StringWithAggregatesFilter<"Doctor"> | string
+  }
+
+  export type CommentWhereInput = {
+    AND?: CommentWhereInput | CommentWhereInput[]
+    OR?: CommentWhereInput[]
+    NOT?: CommentWhereInput | CommentWhereInput[]
+    id?: StringFilter<"Comment"> | string
+    content?: StringFilter<"Comment"> | string
+    medico_id?: StringFilter<"Comment"> | string
+    medico?: XOR<DoctorScalarRelationFilter, DoctorWhereInput>
+  }
+
+  export type CommentOrderByWithRelationInput = {
+    id?: SortOrder
+    content?: SortOrder
+    medico_id?: SortOrder
+    medico?: DoctorOrderByWithRelationInput
+  }
+
+  export type CommentWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: CommentWhereInput | CommentWhereInput[]
+    OR?: CommentWhereInput[]
+    NOT?: CommentWhereInput | CommentWhereInput[]
+    content?: StringFilter<"Comment"> | string
+    medico_id?: StringFilter<"Comment"> | string
+    medico?: XOR<DoctorScalarRelationFilter, DoctorWhereInput>
+  }, "id">
+
+  export type CommentOrderByWithAggregationInput = {
+    id?: SortOrder
+    content?: SortOrder
+    medico_id?: SortOrder
+    _count?: CommentCountOrderByAggregateInput
+    _max?: CommentMaxOrderByAggregateInput
+    _min?: CommentMinOrderByAggregateInput
+  }
+
+  export type CommentScalarWhereWithAggregatesInput = {
+    AND?: CommentScalarWhereWithAggregatesInput | CommentScalarWhereWithAggregatesInput[]
+    OR?: CommentScalarWhereWithAggregatesInput[]
+    NOT?: CommentScalarWhereWithAggregatesInput | CommentScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Comment"> | string
+    content?: StringWithAggregatesFilter<"Comment"> | string
+    medico_id?: StringWithAggregatesFilter<"Comment"> | string
   }
 
   export type RefreshTokenWhereInput = {
@@ -3239,54 +5742,165 @@ export namespace Prisma {
   export type UserCreateInput = {
     id?: string
     name: string
-    username: string
+    email: string
     password: string
+    phone: string
+    isDoctor?: boolean
     refresh_token?: RefreshTokenCreateNestedOneWithoutUserInput
+    doctor_id?: DoctorCreateNestedOneWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
     id?: string
     name: string
-    username: string
+    email: string
     password: string
+    phone: string
+    isDoctor?: boolean
     refresh_token?: RefreshTokenUncheckedCreateNestedOneWithoutUserInput
+    doctor_id?: DoctorUncheckedCreateNestedOneWithoutUserInput
   }
 
   export type UserUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    isDoctor?: BoolFieldUpdateOperationsInput | boolean
     refresh_token?: RefreshTokenUpdateOneWithoutUserNestedInput
+    doctor_id?: DoctorUpdateOneWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    isDoctor?: BoolFieldUpdateOperationsInput | boolean
     refresh_token?: RefreshTokenUncheckedUpdateOneWithoutUserNestedInput
+    doctor_id?: DoctorUncheckedUpdateOneWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
     id?: string
     name: string
-    username: string
+    email: string
     password: string
+    phone: string
+    isDoctor?: boolean
   }
 
   export type UserUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    isDoctor?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type UserUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    isDoctor?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type DoctorCreateInput = {
+    id?: string
+    crm: string
+    socialMedia: string
+    comments?: CommentCreateNestedManyWithoutMedicoInput
+    user: UserCreateNestedOneWithoutDoctor_idInput
+  }
+
+  export type DoctorUncheckedCreateInput = {
+    id?: string
+    crm: string
+    socialMedia: string
+    user_id: string
+    comments?: CommentUncheckedCreateNestedManyWithoutMedicoInput
+  }
+
+  export type DoctorUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    crm?: StringFieldUpdateOperationsInput | string
+    socialMedia?: StringFieldUpdateOperationsInput | string
+    comments?: CommentUpdateManyWithoutMedicoNestedInput
+    user?: UserUpdateOneRequiredWithoutDoctor_idNestedInput
+  }
+
+  export type DoctorUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    crm?: StringFieldUpdateOperationsInput | string
+    socialMedia?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    comments?: CommentUncheckedUpdateManyWithoutMedicoNestedInput
+  }
+
+  export type DoctorCreateManyInput = {
+    id?: string
+    crm: string
+    socialMedia: string
+    user_id: string
+  }
+
+  export type DoctorUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    crm?: StringFieldUpdateOperationsInput | string
+    socialMedia?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type DoctorUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    crm?: StringFieldUpdateOperationsInput | string
+    socialMedia?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CommentCreateInput = {
+    id?: string
+    content: string
+    medico: DoctorCreateNestedOneWithoutCommentsInput
+  }
+
+  export type CommentUncheckedCreateInput = {
+    id?: string
+    content: string
+    medico_id: string
+  }
+
+  export type CommentUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    medico?: DoctorUpdateOneRequiredWithoutCommentsNestedInput
+  }
+
+  export type CommentUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    medico_id?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CommentCreateManyInput = {
+    id?: string
+    content: string
+    medico_id: string
+  }
+
+  export type CommentUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CommentUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    medico_id?: StringFieldUpdateOperationsInput | string
   }
 
   export type RefreshTokenCreateInput = {
@@ -3344,30 +5958,46 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
   export type RefreshTokenNullableScalarRelationFilter = {
     is?: RefreshTokenWhereInput | null
     isNot?: RefreshTokenWhereInput | null
   }
 
+  export type DoctorNullableScalarRelationFilter = {
+    is?: DoctorWhereInput | null
+    isNot?: DoctorWhereInput | null
+  }
+
   export type UserCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
-    username?: SortOrder
+    email?: SortOrder
     password?: SortOrder
+    phone?: SortOrder
+    isDoctor?: SortOrder
   }
 
   export type UserMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
-    username?: SortOrder
+    email?: SortOrder
     password?: SortOrder
+    phone?: SortOrder
+    isDoctor?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
-    username?: SortOrder
+    email?: SortOrder
     password?: SortOrder
+    phone?: SortOrder
+    isDoctor?: SortOrder
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -3387,6 +6017,73 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type CommentListRelationFilter = {
+    every?: CommentWhereInput
+    some?: CommentWhereInput
+    none?: CommentWhereInput
+  }
+
+  export type UserScalarRelationFilter = {
+    is?: UserWhereInput
+    isNot?: UserWhereInput
+  }
+
+  export type CommentOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type DoctorCountOrderByAggregateInput = {
+    id?: SortOrder
+    crm?: SortOrder
+    socialMedia?: SortOrder
+    user_id?: SortOrder
+  }
+
+  export type DoctorMaxOrderByAggregateInput = {
+    id?: SortOrder
+    crm?: SortOrder
+    socialMedia?: SortOrder
+    user_id?: SortOrder
+  }
+
+  export type DoctorMinOrderByAggregateInput = {
+    id?: SortOrder
+    crm?: SortOrder
+    socialMedia?: SortOrder
+    user_id?: SortOrder
+  }
+
+  export type DoctorScalarRelationFilter = {
+    is?: DoctorWhereInput
+    isNot?: DoctorWhereInput
+  }
+
+  export type CommentCountOrderByAggregateInput = {
+    id?: SortOrder
+    content?: SortOrder
+    medico_id?: SortOrder
+  }
+
+  export type CommentMaxOrderByAggregateInput = {
+    id?: SortOrder
+    content?: SortOrder
+    medico_id?: SortOrder
+  }
+
+  export type CommentMinOrderByAggregateInput = {
+    id?: SortOrder
+    content?: SortOrder
+    medico_id?: SortOrder
+  }
+
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[]
@@ -3396,11 +6093,6 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntFilter<$PrismaModel> | number
-  }
-
-  export type UserScalarRelationFilter = {
-    is?: UserWhereInput
-    isNot?: UserWhereInput
   }
 
   export type RefreshTokenCountOrderByAggregateInput = {
@@ -3451,14 +6143,30 @@ export namespace Prisma {
     connect?: RefreshTokenWhereUniqueInput
   }
 
+  export type DoctorCreateNestedOneWithoutUserInput = {
+    create?: XOR<DoctorCreateWithoutUserInput, DoctorUncheckedCreateWithoutUserInput>
+    connectOrCreate?: DoctorCreateOrConnectWithoutUserInput
+    connect?: DoctorWhereUniqueInput
+  }
+
   export type RefreshTokenUncheckedCreateNestedOneWithoutUserInput = {
     create?: XOR<RefreshTokenCreateWithoutUserInput, RefreshTokenUncheckedCreateWithoutUserInput>
     connectOrCreate?: RefreshTokenCreateOrConnectWithoutUserInput
     connect?: RefreshTokenWhereUniqueInput
   }
 
+  export type DoctorUncheckedCreateNestedOneWithoutUserInput = {
+    create?: XOR<DoctorCreateWithoutUserInput, DoctorUncheckedCreateWithoutUserInput>
+    connectOrCreate?: DoctorCreateOrConnectWithoutUserInput
+    connect?: DoctorWhereUniqueInput
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
+  }
+
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
   }
 
   export type RefreshTokenUpdateOneWithoutUserNestedInput = {
@@ -3471,6 +6179,16 @@ export namespace Prisma {
     update?: XOR<XOR<RefreshTokenUpdateToOneWithWhereWithoutUserInput, RefreshTokenUpdateWithoutUserInput>, RefreshTokenUncheckedUpdateWithoutUserInput>
   }
 
+  export type DoctorUpdateOneWithoutUserNestedInput = {
+    create?: XOR<DoctorCreateWithoutUserInput, DoctorUncheckedCreateWithoutUserInput>
+    connectOrCreate?: DoctorCreateOrConnectWithoutUserInput
+    upsert?: DoctorUpsertWithoutUserInput
+    disconnect?: DoctorWhereInput | boolean
+    delete?: DoctorWhereInput | boolean
+    connect?: DoctorWhereUniqueInput
+    update?: XOR<XOR<DoctorUpdateToOneWithWhereWithoutUserInput, DoctorUpdateWithoutUserInput>, DoctorUncheckedUpdateWithoutUserInput>
+  }
+
   export type RefreshTokenUncheckedUpdateOneWithoutUserNestedInput = {
     create?: XOR<RefreshTokenCreateWithoutUserInput, RefreshTokenUncheckedCreateWithoutUserInput>
     connectOrCreate?: RefreshTokenCreateOrConnectWithoutUserInput
@@ -3479,6 +6197,86 @@ export namespace Prisma {
     delete?: RefreshTokenWhereInput | boolean
     connect?: RefreshTokenWhereUniqueInput
     update?: XOR<XOR<RefreshTokenUpdateToOneWithWhereWithoutUserInput, RefreshTokenUpdateWithoutUserInput>, RefreshTokenUncheckedUpdateWithoutUserInput>
+  }
+
+  export type DoctorUncheckedUpdateOneWithoutUserNestedInput = {
+    create?: XOR<DoctorCreateWithoutUserInput, DoctorUncheckedCreateWithoutUserInput>
+    connectOrCreate?: DoctorCreateOrConnectWithoutUserInput
+    upsert?: DoctorUpsertWithoutUserInput
+    disconnect?: DoctorWhereInput | boolean
+    delete?: DoctorWhereInput | boolean
+    connect?: DoctorWhereUniqueInput
+    update?: XOR<XOR<DoctorUpdateToOneWithWhereWithoutUserInput, DoctorUpdateWithoutUserInput>, DoctorUncheckedUpdateWithoutUserInput>
+  }
+
+  export type CommentCreateNestedManyWithoutMedicoInput = {
+    create?: XOR<CommentCreateWithoutMedicoInput, CommentUncheckedCreateWithoutMedicoInput> | CommentCreateWithoutMedicoInput[] | CommentUncheckedCreateWithoutMedicoInput[]
+    connectOrCreate?: CommentCreateOrConnectWithoutMedicoInput | CommentCreateOrConnectWithoutMedicoInput[]
+    createMany?: CommentCreateManyMedicoInputEnvelope
+    connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+  }
+
+  export type UserCreateNestedOneWithoutDoctor_idInput = {
+    create?: XOR<UserCreateWithoutDoctor_idInput, UserUncheckedCreateWithoutDoctor_idInput>
+    connectOrCreate?: UserCreateOrConnectWithoutDoctor_idInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type CommentUncheckedCreateNestedManyWithoutMedicoInput = {
+    create?: XOR<CommentCreateWithoutMedicoInput, CommentUncheckedCreateWithoutMedicoInput> | CommentCreateWithoutMedicoInput[] | CommentUncheckedCreateWithoutMedicoInput[]
+    connectOrCreate?: CommentCreateOrConnectWithoutMedicoInput | CommentCreateOrConnectWithoutMedicoInput[]
+    createMany?: CommentCreateManyMedicoInputEnvelope
+    connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+  }
+
+  export type CommentUpdateManyWithoutMedicoNestedInput = {
+    create?: XOR<CommentCreateWithoutMedicoInput, CommentUncheckedCreateWithoutMedicoInput> | CommentCreateWithoutMedicoInput[] | CommentUncheckedCreateWithoutMedicoInput[]
+    connectOrCreate?: CommentCreateOrConnectWithoutMedicoInput | CommentCreateOrConnectWithoutMedicoInput[]
+    upsert?: CommentUpsertWithWhereUniqueWithoutMedicoInput | CommentUpsertWithWhereUniqueWithoutMedicoInput[]
+    createMany?: CommentCreateManyMedicoInputEnvelope
+    set?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    disconnect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    delete?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    update?: CommentUpdateWithWhereUniqueWithoutMedicoInput | CommentUpdateWithWhereUniqueWithoutMedicoInput[]
+    updateMany?: CommentUpdateManyWithWhereWithoutMedicoInput | CommentUpdateManyWithWhereWithoutMedicoInput[]
+    deleteMany?: CommentScalarWhereInput | CommentScalarWhereInput[]
+  }
+
+  export type UserUpdateOneRequiredWithoutDoctor_idNestedInput = {
+    create?: XOR<UserCreateWithoutDoctor_idInput, UserUncheckedCreateWithoutDoctor_idInput>
+    connectOrCreate?: UserCreateOrConnectWithoutDoctor_idInput
+    upsert?: UserUpsertWithoutDoctor_idInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutDoctor_idInput, UserUpdateWithoutDoctor_idInput>, UserUncheckedUpdateWithoutDoctor_idInput>
+  }
+
+  export type CommentUncheckedUpdateManyWithoutMedicoNestedInput = {
+    create?: XOR<CommentCreateWithoutMedicoInput, CommentUncheckedCreateWithoutMedicoInput> | CommentCreateWithoutMedicoInput[] | CommentUncheckedCreateWithoutMedicoInput[]
+    connectOrCreate?: CommentCreateOrConnectWithoutMedicoInput | CommentCreateOrConnectWithoutMedicoInput[]
+    upsert?: CommentUpsertWithWhereUniqueWithoutMedicoInput | CommentUpsertWithWhereUniqueWithoutMedicoInput[]
+    createMany?: CommentCreateManyMedicoInputEnvelope
+    set?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    disconnect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    delete?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+    update?: CommentUpdateWithWhereUniqueWithoutMedicoInput | CommentUpdateWithWhereUniqueWithoutMedicoInput[]
+    updateMany?: CommentUpdateManyWithWhereWithoutMedicoInput | CommentUpdateManyWithWhereWithoutMedicoInput[]
+    deleteMany?: CommentScalarWhereInput | CommentScalarWhereInput[]
+  }
+
+  export type DoctorCreateNestedOneWithoutCommentsInput = {
+    create?: XOR<DoctorCreateWithoutCommentsInput, DoctorUncheckedCreateWithoutCommentsInput>
+    connectOrCreate?: DoctorCreateOrConnectWithoutCommentsInput
+    connect?: DoctorWhereUniqueInput
+  }
+
+  export type DoctorUpdateOneRequiredWithoutCommentsNestedInput = {
+    create?: XOR<DoctorCreateWithoutCommentsInput, DoctorUncheckedCreateWithoutCommentsInput>
+    connectOrCreate?: DoctorCreateOrConnectWithoutCommentsInput
+    upsert?: DoctorUpsertWithoutCommentsInput
+    connect?: DoctorWhereUniqueInput
+    update?: XOR<XOR<DoctorUpdateToOneWithWhereWithoutCommentsInput, DoctorUpdateWithoutCommentsInput>, DoctorUncheckedUpdateWithoutCommentsInput>
   }
 
   export type UserCreateNestedOneWithoutRefresh_tokenInput = {
@@ -3517,6 +6315,11 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[]
@@ -3543,6 +6346,14 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -3587,6 +6398,25 @@ export namespace Prisma {
     create: XOR<RefreshTokenCreateWithoutUserInput, RefreshTokenUncheckedCreateWithoutUserInput>
   }
 
+  export type DoctorCreateWithoutUserInput = {
+    id?: string
+    crm: string
+    socialMedia: string
+    comments?: CommentCreateNestedManyWithoutMedicoInput
+  }
+
+  export type DoctorUncheckedCreateWithoutUserInput = {
+    id?: string
+    crm: string
+    socialMedia: string
+    comments?: CommentUncheckedCreateNestedManyWithoutMedicoInput
+  }
+
+  export type DoctorCreateOrConnectWithoutUserInput = {
+    where: DoctorWhereUniqueInput
+    create: XOR<DoctorCreateWithoutUserInput, DoctorUncheckedCreateWithoutUserInput>
+  }
+
   export type RefreshTokenUpsertWithoutUserInput = {
     update: XOR<RefreshTokenUpdateWithoutUserInput, RefreshTokenUncheckedUpdateWithoutUserInput>
     create: XOR<RefreshTokenCreateWithoutUserInput, RefreshTokenUncheckedCreateWithoutUserInput>
@@ -3608,18 +6438,193 @@ export namespace Prisma {
     expiresIn?: IntFieldUpdateOperationsInput | number
   }
 
+  export type DoctorUpsertWithoutUserInput = {
+    update: XOR<DoctorUpdateWithoutUserInput, DoctorUncheckedUpdateWithoutUserInput>
+    create: XOR<DoctorCreateWithoutUserInput, DoctorUncheckedCreateWithoutUserInput>
+    where?: DoctorWhereInput
+  }
+
+  export type DoctorUpdateToOneWithWhereWithoutUserInput = {
+    where?: DoctorWhereInput
+    data: XOR<DoctorUpdateWithoutUserInput, DoctorUncheckedUpdateWithoutUserInput>
+  }
+
+  export type DoctorUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    crm?: StringFieldUpdateOperationsInput | string
+    socialMedia?: StringFieldUpdateOperationsInput | string
+    comments?: CommentUpdateManyWithoutMedicoNestedInput
+  }
+
+  export type DoctorUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    crm?: StringFieldUpdateOperationsInput | string
+    socialMedia?: StringFieldUpdateOperationsInput | string
+    comments?: CommentUncheckedUpdateManyWithoutMedicoNestedInput
+  }
+
+  export type CommentCreateWithoutMedicoInput = {
+    id?: string
+    content: string
+  }
+
+  export type CommentUncheckedCreateWithoutMedicoInput = {
+    id?: string
+    content: string
+  }
+
+  export type CommentCreateOrConnectWithoutMedicoInput = {
+    where: CommentWhereUniqueInput
+    create: XOR<CommentCreateWithoutMedicoInput, CommentUncheckedCreateWithoutMedicoInput>
+  }
+
+  export type CommentCreateManyMedicoInputEnvelope = {
+    data: CommentCreateManyMedicoInput | CommentCreateManyMedicoInput[]
+  }
+
+  export type UserCreateWithoutDoctor_idInput = {
+    id?: string
+    name: string
+    email: string
+    password: string
+    phone: string
+    isDoctor?: boolean
+    refresh_token?: RefreshTokenCreateNestedOneWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutDoctor_idInput = {
+    id?: string
+    name: string
+    email: string
+    password: string
+    phone: string
+    isDoctor?: boolean
+    refresh_token?: RefreshTokenUncheckedCreateNestedOneWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutDoctor_idInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutDoctor_idInput, UserUncheckedCreateWithoutDoctor_idInput>
+  }
+
+  export type CommentUpsertWithWhereUniqueWithoutMedicoInput = {
+    where: CommentWhereUniqueInput
+    update: XOR<CommentUpdateWithoutMedicoInput, CommentUncheckedUpdateWithoutMedicoInput>
+    create: XOR<CommentCreateWithoutMedicoInput, CommentUncheckedCreateWithoutMedicoInput>
+  }
+
+  export type CommentUpdateWithWhereUniqueWithoutMedicoInput = {
+    where: CommentWhereUniqueInput
+    data: XOR<CommentUpdateWithoutMedicoInput, CommentUncheckedUpdateWithoutMedicoInput>
+  }
+
+  export type CommentUpdateManyWithWhereWithoutMedicoInput = {
+    where: CommentScalarWhereInput
+    data: XOR<CommentUpdateManyMutationInput, CommentUncheckedUpdateManyWithoutMedicoInput>
+  }
+
+  export type CommentScalarWhereInput = {
+    AND?: CommentScalarWhereInput | CommentScalarWhereInput[]
+    OR?: CommentScalarWhereInput[]
+    NOT?: CommentScalarWhereInput | CommentScalarWhereInput[]
+    id?: StringFilter<"Comment"> | string
+    content?: StringFilter<"Comment"> | string
+    medico_id?: StringFilter<"Comment"> | string
+  }
+
+  export type UserUpsertWithoutDoctor_idInput = {
+    update: XOR<UserUpdateWithoutDoctor_idInput, UserUncheckedUpdateWithoutDoctor_idInput>
+    create: XOR<UserCreateWithoutDoctor_idInput, UserUncheckedCreateWithoutDoctor_idInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutDoctor_idInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutDoctor_idInput, UserUncheckedUpdateWithoutDoctor_idInput>
+  }
+
+  export type UserUpdateWithoutDoctor_idInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    isDoctor?: BoolFieldUpdateOperationsInput | boolean
+    refresh_token?: RefreshTokenUpdateOneWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutDoctor_idInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    isDoctor?: BoolFieldUpdateOperationsInput | boolean
+    refresh_token?: RefreshTokenUncheckedUpdateOneWithoutUserNestedInput
+  }
+
+  export type DoctorCreateWithoutCommentsInput = {
+    id?: string
+    crm: string
+    socialMedia: string
+    user: UserCreateNestedOneWithoutDoctor_idInput
+  }
+
+  export type DoctorUncheckedCreateWithoutCommentsInput = {
+    id?: string
+    crm: string
+    socialMedia: string
+    user_id: string
+  }
+
+  export type DoctorCreateOrConnectWithoutCommentsInput = {
+    where: DoctorWhereUniqueInput
+    create: XOR<DoctorCreateWithoutCommentsInput, DoctorUncheckedCreateWithoutCommentsInput>
+  }
+
+  export type DoctorUpsertWithoutCommentsInput = {
+    update: XOR<DoctorUpdateWithoutCommentsInput, DoctorUncheckedUpdateWithoutCommentsInput>
+    create: XOR<DoctorCreateWithoutCommentsInput, DoctorUncheckedCreateWithoutCommentsInput>
+    where?: DoctorWhereInput
+  }
+
+  export type DoctorUpdateToOneWithWhereWithoutCommentsInput = {
+    where?: DoctorWhereInput
+    data: XOR<DoctorUpdateWithoutCommentsInput, DoctorUncheckedUpdateWithoutCommentsInput>
+  }
+
+  export type DoctorUpdateWithoutCommentsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    crm?: StringFieldUpdateOperationsInput | string
+    socialMedia?: StringFieldUpdateOperationsInput | string
+    user?: UserUpdateOneRequiredWithoutDoctor_idNestedInput
+  }
+
+  export type DoctorUncheckedUpdateWithoutCommentsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    crm?: StringFieldUpdateOperationsInput | string
+    socialMedia?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+  }
+
   export type UserCreateWithoutRefresh_tokenInput = {
     id?: string
     name: string
-    username: string
+    email: string
     password: string
+    phone: string
+    isDoctor?: boolean
+    doctor_id?: DoctorCreateNestedOneWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutRefresh_tokenInput = {
     id?: string
     name: string
-    username: string
+    email: string
     password: string
+    phone: string
+    isDoctor?: boolean
+    doctor_id?: DoctorUncheckedCreateNestedOneWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutRefresh_tokenInput = {
@@ -3641,15 +6646,41 @@ export namespace Prisma {
   export type UserUpdateWithoutRefresh_tokenInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    isDoctor?: BoolFieldUpdateOperationsInput | boolean
+    doctor_id?: DoctorUpdateOneWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutRefresh_tokenInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    isDoctor?: BoolFieldUpdateOperationsInput | boolean
+    doctor_id?: DoctorUncheckedUpdateOneWithoutUserNestedInput
+  }
+
+  export type CommentCreateManyMedicoInput = {
+    id?: string
+    content: string
+  }
+
+  export type CommentUpdateWithoutMedicoInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CommentUncheckedUpdateWithoutMedicoInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CommentUncheckedUpdateManyWithoutMedicoInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
   }
 
 
