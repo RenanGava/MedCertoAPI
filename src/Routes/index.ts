@@ -1,39 +1,17 @@
 import { Router } from 'express'
-import { prisma } from '../prisma/prisma'
+import authRouter from './auth'
+import { userRouter } from './user'
+import { doctorRouter } from './doctor'
 
 
 
 const mainRouter = Router()
 
+// rotas de autenticacao
+mainRouter.use('/auth', authRouter)
+mainRouter.use('/users', userRouter)
+mainRouter.use('/doctors', doctorRouter)
 
-mainRouter.get('/', async (req, res) => {
-
-    const user = await prisma.doctor.create({
-        data:{
-            user:{
-                create:{
-                    name: 'gabriela',
-                    email: 'gabriela@gmail.com',
-                    password: '123',
-                    phone: '(28)999999999',
-                    isDoctor: false,
-                }
-            },
-            crm: '654321',
-            socialMedia: 'lasei',
-        },
-        include:{
-            user: {
-                omit:{
-                    password: true
-                }
-            }
-        }
-    })
-
-    res.json(user)
-    
-})
 
 
 

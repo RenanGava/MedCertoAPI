@@ -16,7 +16,7 @@ yarn prisma migrate deploy
 echo Iniciando a API
 sleep 5
 
-if [ "$NODE_ENV" = "production" ]; then
+if [ "$NODE_ENV" == "production" ]; then
   echo "Ambiente de produção"
   yarn start
 else
