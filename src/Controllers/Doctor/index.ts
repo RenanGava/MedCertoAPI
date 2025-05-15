@@ -6,6 +6,8 @@ interface ICreateDoctor {
   crm: string;
   specialty: string;
   socialMedia: string;
+  lat: string
+  long: string
 }
 
 export class DoctorController {

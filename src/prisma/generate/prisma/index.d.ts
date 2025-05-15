@@ -2345,6 +2345,8 @@ export namespace Prisma {
     crm: string | null
     specialty: string | null
     socialMedia: string | null
+    lat: string | null
+    long: string | null
     user_id: string | null
   }
 
@@ -2353,6 +2355,8 @@ export namespace Prisma {
     crm: string | null
     specialty: string | null
     socialMedia: string | null
+    lat: string | null
+    long: string | null
     user_id: string | null
   }
 
@@ -2361,6 +2365,8 @@ export namespace Prisma {
     crm: number
     specialty: number
     socialMedia: number
+    lat: number
+    long: number
     user_id: number
     _all: number
   }
@@ -2371,6 +2377,8 @@ export namespace Prisma {
     crm?: true
     specialty?: true
     socialMedia?: true
+    lat?: true
+    long?: true
     user_id?: true
   }
 
@@ -2379,6 +2387,8 @@ export namespace Prisma {
     crm?: true
     specialty?: true
     socialMedia?: true
+    lat?: true
+    long?: true
     user_id?: true
   }
 
@@ -2387,6 +2397,8 @@ export namespace Prisma {
     crm?: true
     specialty?: true
     socialMedia?: true
+    lat?: true
+    long?: true
     user_id?: true
     _all?: true
   }
@@ -2468,6 +2480,8 @@ export namespace Prisma {
     crm: string
     specialty: string
     socialMedia: string
+    lat: string
+    long: string
     user_id: string
     _count: DoctorCountAggregateOutputType | null
     _min: DoctorMinAggregateOutputType | null
@@ -2493,6 +2507,8 @@ export namespace Prisma {
     crm?: boolean
     specialty?: boolean
     socialMedia?: boolean
+    lat?: boolean
+    long?: boolean
     user_id?: boolean
     caledar?: boolean | Doctor$caledarArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -2504,6 +2520,8 @@ export namespace Prisma {
     crm?: boolean
     specialty?: boolean
     socialMedia?: boolean
+    lat?: boolean
+    long?: boolean
     user_id?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["doctor"]>
@@ -2513,6 +2531,8 @@ export namespace Prisma {
     crm?: boolean
     specialty?: boolean
     socialMedia?: boolean
+    lat?: boolean
+    long?: boolean
     user_id?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["doctor"]>
@@ -2522,10 +2542,12 @@ export namespace Prisma {
     crm?: boolean
     specialty?: boolean
     socialMedia?: boolean
+    lat?: boolean
+    long?: boolean
     user_id?: boolean
   }
 
-  export type DoctorOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "crm" | "specialty" | "socialMedia" | "user_id", ExtArgs["result"]["doctor"]>
+  export type DoctorOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "crm" | "specialty" | "socialMedia" | "lat" | "long" | "user_id", ExtArgs["result"]["doctor"]>
   export type DoctorInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     caledar?: boolean | Doctor$caledarArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -2549,6 +2571,8 @@ export namespace Prisma {
       crm: string
       specialty: string
       socialMedia: string
+      lat: string
+      long: string
       user_id: string
     }, ExtArgs["result"]["doctor"]>
     composites: {}
@@ -2979,6 +3003,8 @@ export namespace Prisma {
     readonly crm: FieldRef<"Doctor", 'String'>
     readonly specialty: FieldRef<"Doctor", 'String'>
     readonly socialMedia: FieldRef<"Doctor", 'String'>
+    readonly lat: FieldRef<"Doctor", 'String'>
+    readonly long: FieldRef<"Doctor", 'String'>
     readonly user_id: FieldRef<"Doctor", 'String'>
   }
     
@@ -5559,6 +5585,8 @@ export namespace Prisma {
     crm: 'crm',
     specialty: 'specialty',
     socialMedia: 'socialMedia',
+    lat: 'lat',
+    long: 'long',
     user_id: 'user_id'
   };
 
@@ -5709,6 +5737,8 @@ export namespace Prisma {
     crm?: StringFilter<"Doctor"> | string
     specialty?: StringFilter<"Doctor"> | string
     socialMedia?: StringFilter<"Doctor"> | string
+    lat?: StringFilter<"Doctor"> | string
+    long?: StringFilter<"Doctor"> | string
     user_id?: StringFilter<"Doctor"> | string
     caledar?: CalendarListRelationFilter
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
@@ -5719,6 +5749,8 @@ export namespace Prisma {
     crm?: SortOrder
     specialty?: SortOrder
     socialMedia?: SortOrder
+    lat?: SortOrder
+    long?: SortOrder
     user_id?: SortOrder
     caledar?: CalendarOrderByRelationAggregateInput
     user?: UserOrderByWithRelationInput
@@ -5733,6 +5765,8 @@ export namespace Prisma {
     NOT?: DoctorWhereInput | DoctorWhereInput[]
     specialty?: StringFilter<"Doctor"> | string
     socialMedia?: StringFilter<"Doctor"> | string
+    lat?: StringFilter<"Doctor"> | string
+    long?: StringFilter<"Doctor"> | string
     caledar?: CalendarListRelationFilter
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id" | "crm" | "user_id">
@@ -5742,6 +5776,8 @@ export namespace Prisma {
     crm?: SortOrder
     specialty?: SortOrder
     socialMedia?: SortOrder
+    lat?: SortOrder
+    long?: SortOrder
     user_id?: SortOrder
     _count?: DoctorCountOrderByAggregateInput
     _max?: DoctorMaxOrderByAggregateInput
@@ -5756,6 +5792,8 @@ export namespace Prisma {
     crm?: StringWithAggregatesFilter<"Doctor"> | string
     specialty?: StringWithAggregatesFilter<"Doctor"> | string
     socialMedia?: StringWithAggregatesFilter<"Doctor"> | string
+    lat?: StringWithAggregatesFilter<"Doctor"> | string
+    long?: StringWithAggregatesFilter<"Doctor"> | string
     user_id?: StringWithAggregatesFilter<"Doctor"> | string
   }
 
@@ -5939,6 +5977,8 @@ export namespace Prisma {
     crm: string
     specialty: string
     socialMedia: string
+    lat: string
+    long: string
     caledar?: CalendarCreateNestedManyWithoutDoctorInput
     user: UserCreateNestedOneWithoutDoctor_idInput
   }
@@ -5948,6 +5988,8 @@ export namespace Prisma {
     crm: string
     specialty: string
     socialMedia: string
+    lat: string
+    long: string
     user_id: string
     caledar?: CalendarUncheckedCreateNestedManyWithoutDoctorInput
   }
@@ -5957,6 +5999,8 @@ export namespace Prisma {
     crm?: StringFieldUpdateOperationsInput | string
     specialty?: StringFieldUpdateOperationsInput | string
     socialMedia?: StringFieldUpdateOperationsInput | string
+    lat?: StringFieldUpdateOperationsInput | string
+    long?: StringFieldUpdateOperationsInput | string
     caledar?: CalendarUpdateManyWithoutDoctorNestedInput
     user?: UserUpdateOneRequiredWithoutDoctor_idNestedInput
   }
@@ -5966,6 +6010,8 @@ export namespace Prisma {
     crm?: StringFieldUpdateOperationsInput | string
     specialty?: StringFieldUpdateOperationsInput | string
     socialMedia?: StringFieldUpdateOperationsInput | string
+    lat?: StringFieldUpdateOperationsInput | string
+    long?: StringFieldUpdateOperationsInput | string
     user_id?: StringFieldUpdateOperationsInput | string
     caledar?: CalendarUncheckedUpdateManyWithoutDoctorNestedInput
   }
@@ -5975,6 +6021,8 @@ export namespace Prisma {
     crm: string
     specialty: string
     socialMedia: string
+    lat: string
+    long: string
     user_id: string
   }
 
@@ -5983,6 +6031,8 @@ export namespace Prisma {
     crm?: StringFieldUpdateOperationsInput | string
     specialty?: StringFieldUpdateOperationsInput | string
     socialMedia?: StringFieldUpdateOperationsInput | string
+    lat?: StringFieldUpdateOperationsInput | string
+    long?: StringFieldUpdateOperationsInput | string
   }
 
   export type DoctorUncheckedUpdateManyInput = {
@@ -5990,6 +6040,8 @@ export namespace Prisma {
     crm?: StringFieldUpdateOperationsInput | string
     specialty?: StringFieldUpdateOperationsInput | string
     socialMedia?: StringFieldUpdateOperationsInput | string
+    lat?: StringFieldUpdateOperationsInput | string
+    long?: StringFieldUpdateOperationsInput | string
     user_id?: StringFieldUpdateOperationsInput | string
   }
 
@@ -6182,6 +6234,8 @@ export namespace Prisma {
     crm?: SortOrder
     specialty?: SortOrder
     socialMedia?: SortOrder
+    lat?: SortOrder
+    long?: SortOrder
     user_id?: SortOrder
   }
 
@@ -6190,6 +6244,8 @@ export namespace Prisma {
     crm?: SortOrder
     specialty?: SortOrder
     socialMedia?: SortOrder
+    lat?: SortOrder
+    long?: SortOrder
     user_id?: SortOrder
   }
 
@@ -6198,6 +6254,8 @@ export namespace Prisma {
     crm?: SortOrder
     specialty?: SortOrder
     socialMedia?: SortOrder
+    lat?: SortOrder
+    long?: SortOrder
     user_id?: SortOrder
   }
 
@@ -6677,6 +6735,8 @@ export namespace Prisma {
     crm: string
     specialty: string
     socialMedia: string
+    lat: string
+    long: string
     caledar?: CalendarCreateNestedManyWithoutDoctorInput
   }
 
@@ -6685,6 +6745,8 @@ export namespace Prisma {
     crm: string
     specialty: string
     socialMedia: string
+    lat: string
+    long: string
     caledar?: CalendarUncheckedCreateNestedManyWithoutDoctorInput
   }
 
@@ -6756,6 +6818,8 @@ export namespace Prisma {
     crm?: StringFieldUpdateOperationsInput | string
     specialty?: StringFieldUpdateOperationsInput | string
     socialMedia?: StringFieldUpdateOperationsInput | string
+    lat?: StringFieldUpdateOperationsInput | string
+    long?: StringFieldUpdateOperationsInput | string
     caledar?: CalendarUpdateManyWithoutDoctorNestedInput
   }
 
@@ -6764,6 +6828,8 @@ export namespace Prisma {
     crm?: StringFieldUpdateOperationsInput | string
     specialty?: StringFieldUpdateOperationsInput | string
     socialMedia?: StringFieldUpdateOperationsInput | string
+    lat?: StringFieldUpdateOperationsInput | string
+    long?: StringFieldUpdateOperationsInput | string
     caledar?: CalendarUncheckedUpdateManyWithoutDoctorNestedInput
   }
 
@@ -6869,6 +6935,8 @@ export namespace Prisma {
     crm: string
     specialty: string
     socialMedia: string
+    lat: string
+    long: string
     user: UserCreateNestedOneWithoutDoctor_idInput
   }
 
@@ -6877,6 +6945,8 @@ export namespace Prisma {
     crm: string
     specialty: string
     socialMedia: string
+    lat: string
+    long: string
     user_id: string
   }
 
@@ -6928,6 +6998,8 @@ export namespace Prisma {
     crm?: StringFieldUpdateOperationsInput | string
     specialty?: StringFieldUpdateOperationsInput | string
     socialMedia?: StringFieldUpdateOperationsInput | string
+    lat?: StringFieldUpdateOperationsInput | string
+    long?: StringFieldUpdateOperationsInput | string
     user?: UserUpdateOneRequiredWithoutDoctor_idNestedInput
   }
 
@@ -6936,6 +7008,8 @@ export namespace Prisma {
     crm?: StringFieldUpdateOperationsInput | string
     specialty?: StringFieldUpdateOperationsInput | string
     socialMedia?: StringFieldUpdateOperationsInput | string
+    lat?: StringFieldUpdateOperationsInput | string
+    long?: StringFieldUpdateOperationsInput | string
     user_id?: StringFieldUpdateOperationsInput | string
   }
 

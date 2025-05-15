@@ -31,6 +31,8 @@ model Doctor {
   crm         String @unique
   specialty   String
   socialMedia String
+  lat         String
+  long        String
 
   user_id String @unique
 

@@ -112,6 +112,8 @@ export class UserRepository {
             crm: true,
             specialty: true,
             socialMedia: true,
+            lat: true,
+            long: true,
             user:{
               omit:{
                 password: true

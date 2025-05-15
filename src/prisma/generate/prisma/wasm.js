@@ -131,6 +131,8 @@ exports.Prisma.DoctorScalarFieldEnum = {
   crm: 'crm',
   specialty: 'specialty',
   socialMedia: 'socialMedia',
+  lat: 'lat',
+  long: 'long',
   user_id: 'user_id'
 };
 

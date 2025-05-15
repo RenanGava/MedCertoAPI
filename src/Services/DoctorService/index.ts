@@ -6,6 +6,8 @@ interface ICreateDoctor {
   crm: string;
   specialty: string;
   socialMedia: string;
+  lat: string
+  long: string
 }
 
 export class DoctorService {
@@ -48,6 +50,8 @@ export class DoctorService {
             crm: true,
             socialMedia: true,
             specialty: true,
+            lat: true,
+            long: true,
             user:{
                 omit:{
                     password: true
