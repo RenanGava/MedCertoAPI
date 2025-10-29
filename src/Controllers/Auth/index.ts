@@ -2,13 +2,21 @@ import { Request, Response } from "express";
 import { UserService } from "../../Services/UserService";
 import { GenerateTokenService } from "../../Services/GenerateTokenService";
 
+interface IAddress {
+  street: string;
+  neighborhood: string;
+  cep: string;
+  number: string;
+}
+
 
 interface ICreateUser {
     email: string;
     name: string;
     password: string;
     phone: string;
-    IsDoctor: boolean
+    isDoctor: boolean;
+    address: IAddress
 }
 
 
@@ -18,6 +26,8 @@ export class AuthController{
 
     async handleCreateUser(req: Request, res: Response){
         const dataUser = req.body as ICreateUser
+        console.log(dataUser.isDoctor);
+        
         const userService =  new UserService()
 
         try{

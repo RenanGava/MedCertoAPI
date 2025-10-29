@@ -130,9 +130,15 @@ exports.Prisma.DoctorScalarFieldEnum = {
   id: 'id',
   crm: 'crm',
   specialty: 'specialty',
-  socialMedia: 'socialMedia',
-  lat: 'lat',
-  long: 'long',
+  user_id: 'user_id'
+};
+
+exports.Prisma.AddressScalarFieldEnum = {
+  id: 'id',
+  street: 'street',
+  neighborhood: 'neighborhood',
+  cep: 'cep',
+  number: 'number',
   user_id: 'user_id'
 };
 
@@ -149,6 +155,12 @@ exports.Prisma.RefreshTokenScalarFieldEnum = {
   userId: 'userId'
 };
 
+exports.Prisma.RateScalarFieldEnum = {
+  id: 'id',
+  rating: 'rating',
+  doctor_id: 'doctor_id'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -158,8 +170,10 @@ exports.Prisma.SortOrder = {
 exports.Prisma.ModelName = {
   User: 'User',
   Doctor: 'Doctor',
+  Address: 'Address',
   Calendar: 'Calendar',
-  RefreshToken: 'RefreshToken'
+  RefreshToken: 'RefreshToken',
+  Rate: 'Rate'
 };
 
 /**

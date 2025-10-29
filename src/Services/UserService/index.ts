@@ -1,12 +1,21 @@
 import { prisma } from "../../prisma/prisma";
 import { UserRepository } from "../../Repository/User";
 
+interface IAddress {
+  street: string;
+  neighborhood: string;
+  cep: string;
+  number: string;
+}
+
+
 interface ICreateUser {
     email: string;
     name: string;
     password: string;
     phone: string;
-    IsDoctor: boolean
+    isDoctor: boolean;
+    address: IAddress
 }
 
 export class UserService {
@@ -34,6 +43,9 @@ export class UserService {
             },
             omit:{
                 password: true
+            },
+            include:{
+                address: true,
             }
         })
 

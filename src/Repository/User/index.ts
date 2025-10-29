@@ -2,16 +2,31 @@ import dayjs from "dayjs";
 import { prisma } from "../../prisma/prisma";
 import { compare, hash } from "bcryptjs";
 
+interface IAddress {
+  street: string;
+  neighborhood: string;
+  cep: string;
+  number: string;
+}
+
 interface ICreateUser {
   email: string;
   name: string;
   password: string;
   phone: string;
-  IsDoctor: boolean
+  isDoctor: boolean;
+  address: IAddress;
 }
 
 export class UserRepository {
-  async createUser({ email, name, password, phone, IsDoctor }: ICreateUser) {
+  async createUser({
+    email,
+    name,
+    password,
+    phone,
+    isDoctor,
+    address,
+  }: ICreateUser) {
     const userAlreadyExist = await prisma.user.findUnique({
       where: {
         email: email,
@@ -19,7 +34,16 @@ export class UserRepository {
     });
 
     if (!userAlreadyExist) {
-      const passHash = await hash(password, 8)
+      const passHash = await hash(password, 8);
+
+      console.log({
+        email,
+        name,
+        password,
+        phone,
+        isDoctor,
+        address,
+      });
 
       const user = await prisma.user.create({
         data: {
@@ -27,93 +51,105 @@ export class UserRepository {
           name: name,
           password: passHash,
           phone: phone,
-          isDoctor: IsDoctor ? IsDoctor : false
+          isDoctor: isDoctor,
+          address: {
+            create: {
+              cep: address.cep,
+              neighborhood: address.neighborhood,
+              number: address.number,
+              street: address.street,
+            },
+          },
         },
         omit: {
           password: true,
+        },
+        include: {
+          address: true,
         },
       });
 
       return user;
     }
 
-    throw new Error('user already exists !')
+    throw new Error("user already exists !");
   }
 
-  async findOne(email: string, password: string){
+  async findOne(email: string, password: string) {
     const user = await prisma.user.findUnique({
-        where:{
-            email: email
-        }
-    })
+      where: {
+        email: email,
+      },
+      include: {
+        address: true,
+      },
+    });
 
-    if(!user){
-        throw new Error('user not exist')
+    if (!user) {
+      throw new Error("user not exist");
     }
+    const ArrayKeyValue = new Map();
+    
+    Object.keys(user).map((value, index, array) => {
+      if (value != "password") {
+        return ArrayKeyValue.set(value, Object.values(user)[index])
+      }
+    });
 
-    const comparePass = await compare(password, user.password)
+    const userFormated = Object.fromEntries(new Map(ArrayKeyValue));
 
-    if(comparePass){
-        return {
-            id: user.id,
-            name: user.name,
-            email: user.email,
-            phone: user.phone
-        }
-    }else{
-        throw new Error('user or password incorrect')
+    const comparePass = await compare(password, user.password);
+
+    if (comparePass) {
+      return userFormated
+    } else {
+      throw new Error("user or password incorrect");
     }
   }
 
-  async createScheduling(userId: string, timeScheduling: string, doctorId: string){
-    
-    const time = new Date(timeScheduling)
-    
-    
+  async createScheduling(
+    userId: string,
+    timeScheduling: string,
+    doctorId: string
+  ) {
+    const time = new Date(timeScheduling);
+
     const createSheduling = await prisma.calendar.create({
-      data:{
+      data: {
         doctor_id: doctorId,
         user_id: userId,
-        timeScheduled: time 
+        timeScheduled: time,
       },
-      select:{
+      select: {
         id: true,
         timeScheduled: true,
         doctor: true,
-        user:{
-          omit:{
-            password: true
-          }
-        }
-      }
-    })
-
-   
+        user: {
+          omit: {
+            password: true,
+          },
+        },
+      },
+    });
 
     return {
       id: createSheduling.id,
-      timeScheduled: dayjs(createSheduling.timeScheduled).format('DD/MM/YYYY HH:mm:ss'),
+      timeScheduled: dayjs(createSheduling.timeScheduled).format(
+        "DD/MM/YYYY HH:mm:ss"
+      ),
       user_id: createSheduling.user.id,
-      doctor_id: createSheduling.doctor.id
-    }
+      doctor_id: createSheduling.doctor.id,
+    };
   }
 
-  async findAllSchedules(userId: string){
+  async findAllSchedules(userId: string) {
     const allShedules = await prisma.calendar.findMany({
-      where:{
-        user_id: userId
+      where: {
+        user_id: userId,
       },
-      select:{
-        id: true,
-        timeScheduled: true,
-        doctor: {
-          select:{
-            id: true,
-            crm: true,
-            specialty: true,
-            socialMedia: true,
-            lat: true,
-            long: true,
+      include:{
+        doctor:{
+          include:{
             user:{
               omit:{
                 password: true
@@ -121,10 +157,9 @@ export class UserRepository {
             }
           }
         }
-        
       }
-    })
+    });
 
-    return allShedules
+    return allShedules;
   }
 }

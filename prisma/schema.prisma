@@ -19,6 +19,7 @@ model User {
   phone    String
   isDoctor Boolean @default(false)
 
+  address       Address?
   refresh_token RefreshToken?
   calendar      Calendar[]
   doctor_id     Doctor?
@@ -27,20 +28,30 @@ model User {
 }
 
 model Doctor {
-  id          String @id @default(uuid())
-  crm         String @unique
-  specialty   String
-  socialMedia String
-  lat         String
-  long        String
+  id        String @id @default(uuid())
+  crm       String @unique
+  specialty String
 
   user_id String @unique
 
   caledar Calendar[]
+  rate Rate?
 
   user User @relation(fields: [user_id], references: [id])
 
   @@map("medico")
+}
+
+model Address {
+  id           String @id @default(uuid())
+  street       String
+  neighborhood String
+  cep          String
+  number       String
+
+  user_id String @unique
+
+  user User @relation(fields: [user_id], references: [id])
 }
 
 model Calendar {
@@ -64,4 +75,13 @@ model RefreshToken {
   userId String @unique
 
   @@map("refresh_token")
+}
+
+model Rate {
+  id     String @id @default(uuid())
+  rating Float  @default(0)
+
+  doctor_id String @unique
+
+  doctor Doctor @relation(fields: [doctor_id], references: [id])
 }

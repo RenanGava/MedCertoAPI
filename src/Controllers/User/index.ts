@@ -8,7 +8,6 @@ export class UserController{
         const userId = req.userId as string
 
         const userService = new UserService()
-
         const user = await userService.hanldeFindOneService(userId)
         console.log(user);
         

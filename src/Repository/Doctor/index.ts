@@ -4,40 +4,37 @@ interface ICreateDoctor {
   userId: string;
   crm: string;
   specialty: string;
-  socialMedia: string;
-  lat: string;
-  long: string;
 }
 
 export class DoctorRepository {
   async createDoctor({
     crm,
-    socialMedia,
     specialty,
     userId,
-    lat,
-    long,
   }: ICreateDoctor) {
+    
     const doctor = await prisma.doctor.create({
       data: {
         user_id: userId,
         crm: crm,
-        socialMedia: socialMedia,
         specialty: specialty,
-        lat: lat,
-        long: long,
+        rate:{
+          create:{
+            rating: 0
+          }
+        }
       },
-      select: {
-        id: true,
-        crm: true,
-        socialMedia: true,
-        specialty: true,
-        user: {
-          omit: {
-            password: true,
+      include:{
+        user:{
+          omit:{
+            password: true
           },
+          include:{
+            address: true
+          }
         },
-      },
+        rate: true,
+      }
     });
 
     return doctor;

@@ -8,8 +8,9 @@ const doctorController = new DoctorController()
 
 
 doctorRouter.post("/create", doctorController.handleCreate)
-doctorRouter.get("/details-doctor", IsAuthenticated, doctorController.handleDetails)
+doctorRouter.post("/details-doctor", IsAuthenticated, doctorController.handleDetails)
 doctorRouter.get("/all", IsAuthenticated, doctorController.handleFindAll)
+doctorRouter.put("/update/stars", doctorController.handleUpdateStar)
 
 
 
